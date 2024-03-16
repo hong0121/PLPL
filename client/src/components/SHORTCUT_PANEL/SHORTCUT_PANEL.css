@@ -1,0 +1,22 @@
+/* Panel.css */
+.panel-container {
+    display: flex;
+    justify-content: space-around;
+    position: relative; /* 부모 요소를 relative로 설정하여 자식 요소의 위치를 정렬 */
+  }
+  
+  .panel {
+    margin: 0;
+    width: 300px;
+    height: 150px;
+    background-color: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease;
+  }
+  
+  .panel.hovered {
+    opacity: 0.1; /* 투명도를 더 높게 설정 */
+  }
+  
