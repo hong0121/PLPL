@@ -2,6 +2,7 @@ import React from 'react';
 import SHORTCUT_PANEL from '../../components/SHORTCUT_PANEL/SHORTCUT_PANEL';
 import MenuBar from '../../components/MenuBar/MenuBar';
 
+
 function Intro() {
 
   return (

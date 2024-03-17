@@ -1,26 +1,63 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const express = require('express');
+const bodyParser = require('body-parser');
+const mysql = require('mysql');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+const app = express();
+const PORT = process.env.PORT || 3000;
 
-var app = express();
+app.use(bodyParser.json());
+
+// MySQL 연결 정보 설정
+const connection = mysql.createConnection({
+  host: 'localhost', // 호스트 이름
+  user: 'root', // 사용자 이름
+  password: 'root', // 비밀번호
+  database: 'plpl' // 데이터베이스 이름
+});
+
+// MySQL 연결
+connection.connect((err) => {
+  if (err) {
+    console.error('Error connecting to MySQL database:', err);
+    return;
+  }
+  console.log('Connected to MySQL database');
+});
+
+// 연결된 MySQL 데이터베이스 커넥션을 외부에서 사용할 수 있도록 내보내기
+module.exports = connection;
+
+// Body parser 미들웨어 설정
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// 로그인 엔드포인트
+app.post('/login', (req, res) => {
+  const { username, password } = req.body;
+  const query = `SELECT * FROM members WHERE username = ? AND password = ?`;
+  connection.query(query, [username, password], (error, results, fields) => {
+    if (error) {
+      console.error('Error querying database:', error);
+      res.status(500).json({ error: 'Internal server error' });
+      return;
+    }
+    if (results.length === 0) {
+      res.status(401).json({ error: 'Invalid credentials' });
+      return;
+    }
+    res.status(200).json({ message: 'Login successful', user: results[0] });
+  });
+});
+
+// 서버 시작
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+// app.set('views', path.join(__dirname, 'views'));
+// app.set('view engine', 'jade');
 
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
