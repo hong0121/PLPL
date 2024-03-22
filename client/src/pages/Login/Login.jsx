@@ -1,10 +1,17 @@
-// LoginForm.js
-
 import React, { useState } from 'react';
+import { useNavigate  } from 'react-router-dom';
+import NaverLoginButton from '../NaverLogin/NaverLogin';
 
 function Login({ onLogin }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
+  const history = useNavigate ();
+
+  const onSuccess = (data) => {
+    history.push('/home');
+    console.log('로그인 성공 : ', data);
+  };
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
@@ -29,7 +36,9 @@ function Login({ onLogin }) {
         <label htmlFor="password">Password:</label>
         <input type="password" id="password" value={password} onChange={handlePasswordChange} />
       </div>
-      <button type="submit">Login</button>
+      <button type="submit">Login</button> 
+      <NaverLoginButton onLogin={onLogin} onSuccess={onSuccess} /> {/* onLogin을 props로 전달 */}
+
     </form>
   );
 }
