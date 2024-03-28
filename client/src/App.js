@@ -4,7 +4,7 @@ import Home from "./pages/Home/Home";
 import Intro from "./pages/Intro/Intro";
 import Login from "./pages/Login/Login";
 import SignUp from "./pages/SignUp/SignUp";
-import NaverLogin from "./pages/NaverLogin/NaverLogin";
+//import NaverLogin from "./pages/NaverLogin/NaverLogin";
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/naver-login" element={<NaverLogin />} />
+          {/* <Route path="/naver-login" element={<NaverLogin />} /> */}
         </Routes>
       </BrowserRouter>
     </div>

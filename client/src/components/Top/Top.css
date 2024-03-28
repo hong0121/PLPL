@@ -1,0 +1,65 @@
+body {
+    margin: 0;
+  }
+
+  .navbar {
+    background-color: #fff;
+    border: 1px solid #e2e8f0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+  }
+
+  .top-container {
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    margin: 0 auto; /* 가운데 정렬을 위한 margin 설정 */
+    max-width: 1200px; /* 페이지 최대 너비 설정 */
+  }
+
+  .menu-toggle-btn {
+    display: none;
+  }
+  
+  .top-list {
+    list-style: none; /* li 태그 marker 제거 */
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* 요소들을 가로로 정렬 */
+    gap: 1.5rem;
+    margin: 0; /* 수정 */
+  }
+  
+  .top-link {
+    color: #2d3748;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+  
+  .top-link:hover {
+    color: #4a5568;
+  }
+  
+  /* Responsive Styles */
+  @media screen and (max-width: 768px) {
+    .menu-toggle-btn {
+      display: block;
+      cursor: pointer;
+    }
+  
+    .top-list { /* 'menu-list'을 'top-list'로 변경 */
+      display: none;
+    }
+  
+    .top-items.open .top-list { /* 'menu-list'을 'top-list'로 변경 */
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+  }

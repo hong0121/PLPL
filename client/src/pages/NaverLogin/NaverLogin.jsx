@@ -21,7 +21,7 @@ function NaverLoginButton() {
       callbackUrl={process.env.REACT_APP_CALLBACK_URL} // 네이버 개발자 센터에서 등록한 콜백 URL 입력
       onSuccess={onSuccess}
       onFailure={onFailure}
-      render={(props) => <button onClick={props.onClick}> 네이버로 로그인하기 </button>}
+      render={(props) => <button type="button" onClick={props.onClick}> <i className="fa fa-facebook" aria-hidden="true"></i> </button>}
     />
   );
 }
