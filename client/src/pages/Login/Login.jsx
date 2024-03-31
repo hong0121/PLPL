@@ -62,7 +62,7 @@ function Login() {
           </form>
         </div>
 
-        <div className="overlay-container">
+        {/* <div className="overlay-container">
           <div className="overlay-left">
             <h1>Welcome Back</h1>
             <p>
@@ -79,7 +79,7 @@ function Login() {
               Sign Up
             </button>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

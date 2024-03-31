@@ -8,8 +8,7 @@ import './Intro.css';
 function Intro() {
   return (
     <div className='intro-container'>
-      <div className='top-section'>
-        {/* navbar-section과 가로길이만 맞추면 됌 */}
+      <div className='Top-section'>
         <Top />
       </div>
       <div className='NavBar-section'>
@@ -18,7 +17,6 @@ function Intro() {
       <div className='SHORTCUT_PANEL-section'>
         <SHORTCUT_PANEL />
       </div>
-      
     </div>
   );
 }

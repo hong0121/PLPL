@@ -1,22 +1,52 @@
-/* Panel.css */
 .panel-container {
-    display: flex;
-    justify-content: space-around;
-    position: relative; /* 부모 요소를 relative로 설정하여 자식 요소의 위치를 정렬 */
-  }
+  display: flex;
+  justify-content: space-around;
+  align-items: center; /* 수직 가운데 정렬을 위해 설정합니다. */
+}
+
+.panel {
+  width: calc(50%); /* 패널 컨테이너의 50% 너비를 가지도록 설정하고 여백을 제외합니다. */
+  height: 500px; /* 패널의 높이 설정 (원하는 값으로 수정하세요) */
+  background-color: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s ease;
+
+  align-items: center; /* 수직 가운데 정렬을 위해 설정합니다. */
+}
+.panel .img {
+  display: block;
   
-  .panel {
-    margin: 0;
-    width: 300px;
-    height: 150px;
-    background-color: #f0f0f0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: opacity 0.3s ease;
-  }
-  
-  .panel.hovered {
-    opacity: 0.1; /* 투명도를 더 높게 설정 */
-  }
-  
+}
+
+.panel span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.5); /* 어두운 배경색 */
+  padding: 0.5rem 1rem; /* 내용 주위에 여백 추가 */
+  font-size: 2rem; /* 원하는 크기로 조정 */
+  color: #ffffff; /* 하얀색 */
+  border-radius: 10px;
+}
+
+.panel.hovered {
+  opacity: 0.1; /* 투명도를 더 높게 설정 */
+}
+
+.panel-a {
+  position: relative;
+  overflow: hidden; /* 이미지를 부모 요소의 크기에 맞게 자르기 위해 overflow 속성을 hidden으로 설정합니다. */
+  width: 100%; /* 이미지가 부모 요소의 가로 크기에 맞게 됩니다. */
+}
+
+.panel-b {
+  position: relative;
+  overflow: hidden; /* 이미지를 부모 요소의 크기에 맞게 자르기 위해 overflow 속성을 hidden으로 설정합니다. */
+  width: 100%; /* 이미지가 부모 요소의 가로 크기에 맞게 됩니다. */
+}
+
+
+
